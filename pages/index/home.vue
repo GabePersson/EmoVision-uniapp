@@ -31,13 +31,24 @@
 						</view>
 					</view>
 				</view>
+				<text style="font-size: 18px;
+				font-weight: bold;
+				margin: 20px;
+				box-sizing: border-box;" @click="enter_history_page">查看更多</text>
 			</view>
 		</view>
+		<!-- 		<CustomTabBar selectedTab="/pages/index/home"></CustomTabBar> -->
+		<TabBar currentPath='/pages/index/home'></TabBar>
 	</view>
+	<!-- 		<TabBar currentPath='/pages/index/home'></TabBar> -->
 </template>
 
 <script>
+	// import CustomTabBar from '@/components/CustomTabBar.vue'
 	export default {
+		// components: {
+		// 	CustomTabBar
+		// },
 		data() {
 			return {
 				drawTime: '23小时59分59秒',
@@ -55,7 +66,17 @@
 				]
 			}
 		},
-		methods: {}
+		onLoad() {
+			uni.hideTabBar()
+		},
+		methods: {
+			enter_history_page() {
+				console.log('clicked')
+				uni.navigateTo({
+					url: '/pages/index/history'
+				})
+			}
+		}
 	}
 </script>
 
@@ -65,7 +86,7 @@
 		line-height: 24px;
 		display: flex;
 		flex-direction: column;
-		height: calc(100vh - 50px);
+		height: calc(100vh);
 	}
 
 	/* 	.area1 {
@@ -77,7 +98,7 @@
 	.area2 {
 		background-color: white;
 		box-sizing: border-box;
-		flex: 1;
+		/* 		flex: 1; */
 		overflow: auto;
 		border-radius: 10px 10px 0 0;
 	}

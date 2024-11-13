@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/home",
+    "pages/index/history",
+    "pages/index/about",
+    "pages/index/draw",
+    "pages/index/new_draw",
+    "pages/index/model_select",
+    "pages/index/watch_data"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "custome": true,
+    "list": [
+      {
+        "pagePath": "pages/index/home"
+      },
+      {
+        "pagePath": "pages/index/model_select"
+      },
+      {
+        "pagePath": "pages/index/about"
+      }
+    ]
+  },
+  "usingComponents": {
+    "tab-bar": "/components/TabBar/index"
+  }
+}

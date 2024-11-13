@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Emovision",
+  "usingComponents": {
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "wn-canvas": "/Draw/components/wn-canvas"
+  }
+}

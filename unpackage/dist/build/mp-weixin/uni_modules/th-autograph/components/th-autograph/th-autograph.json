@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "th-color": "/uni_modules/th-autograph/components/th-autograph/th-color",
+    "th-line": "/uni_modules/th-autograph/components/th-autograph/th-line"
+  }
+}

@@ -1,0 +1,80 @@
+
+.container.data-v-6d43f12e {
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+	line-height: 24px;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	/* 确保容器高度占满屏幕 */
+}
+.area2.data-v-6d43f12e {
+	padding: 0;
+	margin: 0;
+	background-color: white;
+	flex: 1;
+	overflow: auto;
+	border-radius: 10px 10px 0 0;
+}
+
+/* 	.area1 {
+	box-sizing: border-box;
+	min-height: 200px;
+} */
+
+/* 	.area2 {
+	background-color: white;
+	box-sizing: border-box;
+	flex: 1;
+	overflow: auto;
+	border-radius: 10px 10px 0px 0px;
+} */
+.search-area.data-v-6d43f12e {
+	padding-top: 10px;
+	background-color: white;
+	border-radius: 0 0 10px 10px;
+}
+.search-wrapper.data-v-6d43f12e {
+	display: flex;
+	align-items: center;
+}
+.back-icon.data-v-6d43f12e {
+	margin-left: 10px;
+	/* 调整数值以增加左边距 */
+	margin-right: 10px;
+	font-size: 22px;
+}
+.search-bar.data-v-6d43f12e {
+	flex: 1;
+}
+.picture-area.data-v-6d43f12e {
+	display: flex;
+	margin: 10px;
+	border-radius: 10px;
+	padding: 10px;
+}
+.picture-area image.data-v-6d43f12e {
+	width: 80px;
+	height: 80px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+.picture-info.data-v-6d43f12e {
+	margin: 10px;
+}
+.picture-name.data-v-6d43f12e {
+	max-width: 190px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	font-size: 18px;
+	font-weight: bold;
+}
+.picture-description.data-v-6d43f12e {
+	font-size: 12px;
+	color: #8f939c;
+}
+.picture-area-hover.data-v-6d43f12e {
+	background-color: #f8f8f8;
+}
+

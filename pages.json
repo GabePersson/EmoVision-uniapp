@@ -5,12 +5,12 @@
 				"navigationBarTitleText": "Emovision"
 			}
 		},
-		// {
-		// 	"path": "pages/index/history",
-		// 	"style": {
-		// 		"navigationBarTitleText": "Emovision"
-		// 	}
-		// },
+		{
+			"path": "pages/index/history",
+			"style": {
+				"navigationBarTitleText": "Emovision"
+			}
+		},
 		{
 			"path": "pages/index/about",
 			"style": {
@@ -22,35 +22,55 @@
 			"style": {
 				"navigationBarTitleText": "Emovision"
 			}
+		},
+		{
+			"path": "pages/index/new_draw",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/model_select",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/watch_data",
+			"style": {
+				"navigationBarTitleText": ""
+			}
 		}
+
 	],
 	"globalStyle": {
 		"navigationStyle": "custom",
-		"backgroundColor": "white",
+		"backgroundColor": "#ffffff",
 		"app-plus": {
 			"background": "#efeff4"
 		}
 	},
 	"tabBar": {
-		"height": "50px",
-		"borderStyle": "#f5f5f5",
-		"backgroundColor": "white",
-		"selectedColor": "#2979ff",
-		"color": "#ccc",
+		"height": "0px",
+		"custome": true,
 		"list": [{
-				"text": "Home",
 				"pagePath": "pages/index/home"
 			},
 			{
-				"text": "",
-				"iconPath": "static/c1.png",
-				"pagePath": "pages/index/draw"
+				"pagePath": "pages/index/model_select"
 			},
 			{
-				"text": "About",
 				"pagePath": "pages/index/about"
 			}
-
 		]
+
+		// "height": "50px",
+		// "borderStyle": "#f5f5f5",
+		// "backgroundColor": "white",
+		// "selectedColor": "#2979ff",
+		// "color": "#ccc",
+
+		// ],
+		// "custom": true
 	}
 }

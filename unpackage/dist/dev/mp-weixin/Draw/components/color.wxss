@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.color {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  z-index: 10;
+  width: 100vw;
+}
+.color .color-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+.color .color-section .color-item {
+  width: 10%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.color .color-section .color-item .color-title {
+  color: #fff;
+  font-size: 24rpx;
+}
+.color-show {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: block;
+}
+

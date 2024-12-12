@@ -262,7 +262,8 @@
 			},
 			clear_data() {
 				uni.request({
-					url: "http://152.136.47.111:25565/clear",
+请修改api地址
+					url: "http://xxx.xxx.xxx.xxx:25565/clear",
 					method: "GET"
 				});
 			},
@@ -281,7 +282,8 @@
 					return;
 				}
 				uni.request({
-					url: "http://152.136.47.111:25565/process_text_info",
+请设置api地址
+					url: "http://xxx.xxx.xxx.xxx:25565/process_text_info",
 					method: "POST",
 					data: {
 						text: this.prompt
@@ -305,7 +307,8 @@
 			async img_recognition() {
 				const temp_file_path = await this.canvasToFilPath()
 				uni.uploadFile({
-					url: "http://152.136.47.111:25564/picture_predict",
+请设置api地址
+					url: "http://xxx.xxx.xxx.xxx:25564/picture_predict",
 					filePath: temp_file_path,
 					name: "file",
 					success: (res) => {
@@ -333,7 +336,8 @@
 				}
 				this.is_generating_ref = true;
 				uni.request({
-					url: "http://152.136.47.111:25565/generate_ref_img",
+请设置api地址
+					url: "http://xxx.xxx.xxx.xxx:25565/generate_ref_img",
 					method: 'POST',
 					data: {
 						text: this.prompt
@@ -373,7 +377,8 @@
 				this.is_generating_next = true;
 				const draw_path = await this.canvasToFilPath()
 				uni.uploadFile({
-					url: 'http://152.136.47.111:25565/generate_next_img',
+请设置api地址
+					url: 'http://xxx.xxx.xxx.xxx:25565/generate_next_img',
 					method: "POST",
 					filePath: draw_path,
 					name: 'file',
@@ -453,7 +458,8 @@
 			},
 			start_speech_recognition() {
 				uni.uploadFile({
-					url: 'http://152.136.47.111:25565/voice_recognition',
+请设置api地址
+					url: 'http://xxx.xxx.xxx.xxx:25565/voice_recognition',
 					filePath: this.audio_path,
 					name: 'file',
 					success: (res) => {

@@ -14,7 +14,8 @@
 	export default {
 		data() {
 			return {
-				iframeSrc: "http://sugar.aipage.com/dashboard/175484104203ff5c9b1de39557fc0f35", // 默认加载百度
+请将此处修改为你的sugarbi地址
+				iframeSrc: "http://sugar.aipage.com/dashboard/xxx", // 默认加载百度
 				draw_name: "",
 
 				context: null,

@@ -64,7 +64,8 @@
 						success: (res) => {
 							if (res.confirm) {
 								uni.request({
-									url: "http://152.136.47.111:25565/enterNextStage",
+请设置你的api地址
+									url: "http://xxx.xxx.xxx.xxx:25565/enterNextStage",
 									method: "POST"
 								});
 								console.log("准备进入下一阶段", this.draw_name);
@@ -77,7 +78,8 @@
 					});
 				} else {
 					const res = await uni.request({
-						url: "http://152.136.47.111:25565/most_emo",
+请设置api地址
+						url: "http://xxx.xxx.xxx.xxx:25565/most_emo",
 						method: "GET"
 					});
 					const draw_path = await this.$refs.child.canvasToFilPath();
@@ -95,7 +97,8 @@
 						success: res => {
 							if (res.confirm) {
 								uni.request({
-									url: "http://152.136.47.111:25565/stopNextStage",
+请设置api地址
+									url: "http://xxx.xxx.xxx.xxx:25565/stopNextStage",
 									method: "POST"
 								});
 

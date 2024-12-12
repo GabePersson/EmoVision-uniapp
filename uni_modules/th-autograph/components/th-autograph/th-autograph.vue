@@ -1,31 +1,97 @@
 <template>
 	<view class="autograph-box" :style="{'padding-bottom': bottomHeight + 'px'}">
+		<!-- 画板 -->
 		<canvas class="autograph" v-show="canvasShow" :class="{'hidden': !canvasShow}" :canvas-id="canvasId"
-			:id="canvasId" @touchstart="canvasStart($event)" @touchmove="canvasMove($event)">
+			:id="canvasId" @touchstart="canvasStart($event)" @touchmove="canvasMove($event)" disable-scroll:true>
 			<view v-if="history.length==0" :class="['default-text',horizontalScreen?'rote-text':'']">绘制区域</view>
 		</canvas>
+		<!-- 使用工具时的遮盖 -->
 		<view v-show="!canvasShow" class="autograph" :class="{'hidden': canvasShow, 'rote-text': horizontalScreen }">配置中
 		</view>
-		<view :class="['action-box',horizontalScreen?'rote-action':'']">
-			<view class="action-bar">
-				<view :class="[actionShow?'action-open':'action-close']">
-					<image src="../../static/th-autograph/pencli.svg" @click="openAction('thLine')"
-						v-if="judge('pencli')"></image>
-					<image src="../../static/th-autograph/color.svg" @click="openAction('thColor')"
-						v-if="judge('color')"></image>
-					<image src="../../static/th-autograph/back.svg" @click="goBack" v-if="judge('back')"></image>
-					<image src="../../static/th-autograph/clear.svg" @click="clear" v-if="judge('clear')"></image>
-				</view>
-				<image src="../../static/th-autograph/checkRow.png" @click="checkAction" v-if="actionBar.length!=0"
-					:class="[actionShow?'roteRight':'roteLeft']"></image>
-			</view>
-			<view class="th-submit" @click="saveCanvas" hover-class="hover-class">确定</view>
+
+		<image class="draw_tool_btn" :style="{ left: `${tool_currentX}px`, top: `${tool_currentY}px` }"
+			src="/static/draw/draw_tool_btn.png" @click="change_head_toggle_visual"
+			@touchstart="startDrag($event,'tool')" @touchmove="dragging($event, 'tool')" @touchend="endDrag">
+		</image>
+		<!-- 确认结束绘画按钮 -->
+		<image class="confirm_btn" :style="{ left: `${confirm_btn_currentX}px`, top: `${confirm_btn_currentY}px` }"
+			src="/static/draw/confirm_btn.png" @touchstart="startDrag($event,'confirm')"
+			@touchmove="dragging($event, 'confirm')" @touchend="endDrag" @click="confirm">
+		</image>
+
+		<!-- 上方工具栏 -->
+		<view :class="['head_toggle',head_toggle_visible?'visible':'hidden']">
+			<image class="head_toogle_icon" src="../../static/th-autograph/pencli.svg" @click="openAction('thLine')"
+				v-if="judge('pencli')" title="画笔"></image>
+			<image class="head_toogle_icon" src="../../static/th-autograph/color.svg" @click="openAction('thColor')"
+				v-if="judge('color')" title="颜色"></image>
+			<image class="head_toogle_icon" src="../../static/th-autograph/back.svg" @click="goBack"
+				v-if="judge('back')" title="撤销"></image>
+			<image class="head_toogle_icon" src="../../static/th-autograph/clear.svg" @click="clear"
+				v-if="judge('clear')" title="清空"></image>
+
 		</view>
+
+
+		<!-- 左侧的工具栏 -->
+		<view :class="['left_toggle',left_toggle_visible?'visible':'hidden']">
+			<view class="left_toggle_title">
+				<image class="left_toggle_title_img" src="/static/draw/title.png"></image>
+			</view>
+			<view class="left_main_container">
+				<view class="left_top_tool">
+					<view class="ref_img_container">
+						<image class="generate_img" :src="img_path.ref" @click="put_ref_img"></image>
+					</view>
+					<view class="re_and_put_group">
+						<image class="regenerate_btn" src="/static/draw/regenerate_btn.png" @click="generate_ref_img">
+						</image>
+						<image class="put_btn"
+							:src="canPut?'/static/draw/can_delete.png':'/static/draw/cannot_delete.png'"
+							@click="remove_ref_image">
+						</image>
+					</view>
+					<view class="prompt_input_wrapper">
+						<input class="prompt_input" v-model="prompt" placeholder="请输入" />
+						<image class="voice_icon"
+							:src="is_recording?'/static/draw/voice_enable.png':'/static/draw/voice.png'"
+							@click="toggle_speech_recognition">
+						</image>
+					</view>
+					<image class="start_generate_btn" src="/static/draw/staert.png" @click="generate_next_img">
+					</image>
+					<slider class="finetune_ref_width" :value="ref_width" @changing="slider_width_change" min=100
+						max=500>
+						宽度
+					</slider>
+					<slider class="finetune_ref_height" :value="ref_height" @changing="slider_height_change" min=100
+						max=500>高度
+					</slider>
+				</view>
+				<view class="left_bottom_tool">
+					<image class="logo" src="/static/draw/logo.png"></image>
+					<image class="hide_left_btn" src="/static/draw/hide_left_btn.png"
+						@click="change_left_toggle_visual"></image>
+				</view>
+			</view>
+		</view>
+
+		<!-- 关闭/回到上一界面 -->
+		<image class="close_btn" src="/static/draw/close.png" @click="close"></image>
+		<image class="show_left_btn" src="/static/draw/show_left_btn.png" @click="change_left_toggle_visual">
+		</image>
+
+		<!-- 隐藏的参考图层 -->
+		<image :class="[ref_layer_hidden?'hidden':'display','ref_layer']"
+			:style="{ left: `${ref_currentX}px`, top: `${ref_currentY}px`,width:`${ref_width}px`,height:`${ref_height}px` }"
+			@touchstart="startDrag($event,'ref')" @touchmove="dragging($event, 'ref')" @touchend="endDrag"
+			:src="ref_path"></image>
+
+
 		<th-color ref="thColor" @setColor="setColor" @closePop="canvasShow = true"></th-color>
 		<th-line ref="thLine" @setLine="setLine" @closePop="canvasShow = true"></th-line>
 	</view>
 </template>
-
 <script>
 	/**
 	 * @property {Array} actionBar 操作按钮配置 pencli(线条)  color(颜色)  back(返回)  clear(清空)
@@ -60,7 +126,7 @@
 			//是否下载签名
 			isDownload: {
 				type: Boolean,
-				default: true
+				default: false
 			},
 			//是否横屏
 			horizontalScreen: {
@@ -81,19 +147,76 @@
 			delineWidth: {
 				type: Number,
 				default: 4
+			},
+			background_name: {
+				type: String,
+				default: '1'
+			}
+		},
+		computed: {
+			model_src() {
+				return `/static/model/${this.background_name}.jpg`
 			}
 		},
 		data() {
 			return {
-				context: "",
-				actionShow: true,
+				context: null,
 				history: [],
-				lineColor: "#000",
-				lineWidth: 4,
+				lineColor: this.delineColor,
+				lineWidth: this.delineWidth,
 				canvasShow: true,
-				bottomHeight: 0
-			}
+				bottomHeight: 0,
+				canvasWidth: 0,
+				canvasHeight: 0,
+				toolbarVisible: true, // Initially hidden toolbar
+				head_toggle_visible: true,
+				left_toggle_visible: true,
+				touchStartY: 0, // To track the Y position of the touch start for swipe detection
+				isDragging: false, // 是否正在拖动
+				startX: 0, // 初始触摸点X坐标
+				startY: 0, // 初始触摸点Y坐标
+				tool_currentX: 300, // 屏幕宽度减去按钮宽度和右侧间距
+				tool_currentY: 200, // 屏幕高度减去按钮高度和底部间距
+				confirm_btn_currentX: 290,
+				confirm_btn_currentY: 600,
+
+				offsetX: 0, // 按钮的偏移量
+				offsetY: 0, // 按钮的偏移量
+
+				prompt: "",
+				// 录音用
+				recorder_manager: null,
+				is_recording: false,
+				audio_path: "",
+				ref_left: 0,
+				ref_top: 0,
+
+				// 参考图像用
+				img_path: {
+					"ref": "/static/draw/sample_generation.jpg",
+					"next_step": ""
+				},
+				is_generating_next: false,
+				is_generating_ref: false,
+				// 参考图层
+				ref_path: "/static/draw/sample_generation.jpg",
+				ref_layer_hidden: true,
+				ref_currentY: 200,
+				ref_currentX: 200,
+				ref_width: 160,
+				ref_height: 160,
+
+				// 各类情绪分析计时器
+				text_analyse_timer: null,
+				picture_analyse_timer: null,
+
+				canPut: false,
+
+				desc: "",
+
+			};
 		},
+
 		components: {
 			thColor,
 			thLine
@@ -104,10 +227,389 @@
 			// #endif
 			this.lineColor = this.delineColor
 			this.lineWidth = this.delineWidth
-			const ctx = uni.createCanvasContext(this.canvasId, this)
+			const ctx = uni.createCanvasContext(this.canvasId, this);
 			this.context = ctx;
+			this.$nextTick(() => {
+				const button = this.$refs.toggleButton;
+				this.initCanvas();
+			});
+			this.img_path.ref = this.model_src;
+			this.ref_path = this.model_src;
 		},
 		methods: {
+			slider_width_change(e) {
+				this.ref_width = e.detail.value;
+			},
+			slider_height_change(e) {
+				this.ref_height = e.detail.value;
+			},
+			put_ref_img() {
+				this.ref_path = this.img_path["ref"];
+				this.ref_layer_hidden = false;
+				this.canPut = true;
+
+			},
+			// draw_ref_image() {
+			// 	this.context.drawImage(this.ref_path, this.ref_currentX, this.ref_currentY, this.ref_width, this
+			// 		.ref_height);
+			// 	this.context.draw(true);
+			// 	this.ref_layer_hidden = true;
+			// 	this.canPut = false;
+			// },
+			remove_ref_image() {
+				this.ref_layer_hidden = true;
+				this.canPut = false;
+			},
+			clear_data() {
+				uni.request({
+					url: "http://152.136.47.111:25565/clear",
+					method: "GET"
+				});
+			},
+			set_timer() {
+				// debug用
+				this.text_analyse_timer = setInterval(this.prompt_analyse, 20000);
+				this.picture_analyse_timer = setInterval(this.img_recognition, 20000);
+			},
+			uninstall_timer() {
+				clearInterval(this.text_analyse_timer);
+				clearInterval(this.picture_analyse_timer);
+			},
+			prompt_analyse() {
+				console.log(this.prompt);
+				if (this.prompt == "") {
+					return;
+				}
+				uni.request({
+					url: "http://152.136.47.111:25565/process_text_info",
+					method: "POST",
+					data: {
+						text: this.prompt
+					},
+					success: (res) => {
+						console.log("文本情绪分析成功", res);
+					},
+					fail: (err) => {
+						console.log("情绪分析失败", err);
+						uni.showToast({
+							title: "分析失败，请检查连接",
+							position: "bottom"
+						})
+					}
+
+				})
+			},
+			get_img_desc() {
+				return this.desc;
+			},
+			async img_recognition() {
+				const temp_file_path = await this.canvasToFilPath()
+				uni.uploadFile({
+					url: "http://152.136.47.111:25564/picture_predict",
+					filePath: temp_file_path,
+					name: "file",
+					success: (res) => {
+						console.log("绘画情绪分析成功", res);
+						this.desc = res.data;
+
+					},
+					fail: (err) => {
+						console.log("失败", err);
+						uni.showToast({
+							title: "分析失败，请检查连接",
+							position: "bottom"
+						})
+					}
+
+				})
+			},
+			generate_ref_img() {
+				if (this.is_generating_ref) {
+					uni.showToast({
+						title: "正在生成中，请稍等~",
+						position: 'bottom'
+					})
+					return;
+				}
+				this.is_generating_ref = true;
+				uni.request({
+					url: "http://152.136.47.111:25565/generate_ref_img",
+					method: 'POST',
+					data: {
+						text: this.prompt
+					},
+					success: (res) => {
+						console.log("成功", res);
+						var return_data = res.data;
+						if (return_data.image_url == "") {
+							uni.showToast({
+								title: "生成失败，请检查网络",
+								position: "bottom"
+							});
+						} else {
+							this.download_data(return_data.image_url, "ref");
+						}
+						this.is_generating_ref = false;
+					},
+					fail: (err) => {
+						console.log("失败", err);
+						uni.showToast({
+							title: "生成失败，请检查连接",
+							position: "bottom"
+						})
+						this.is_generating_ref = false;
+					}
+				});
+
+			},
+			async generate_next_img() {
+				if (this.is_generating_next) {
+					uni.showToast({
+						title: "正在生成中，请稍等~",
+						position: 'bottom'
+					})
+					return;
+				}
+				this.is_generating_next = true;
+				const draw_path = await this.canvasToFilPath()
+				uni.uploadFile({
+					url: 'http://152.136.47.111:25565/generate_next_img',
+					method: "POST",
+					filePath: draw_path,
+					name: 'file',
+					formData: {
+						'prompt': this.prompt
+					},
+					success: (res) => {
+						console.log("成功", res);
+						var return_data = JSON.parse(res.data);
+						if (return_data.image_url == "") {
+							uni.showToast({
+								title: "生成失败，请联系管理员",
+								position: "bottom"
+							});
+						} else {
+							this.download_data(return_data.image_url, "next_step");
+						}
+						this.is_generating_next = false;
+					},
+					fail: (err) => {
+						console.log("失败", err);
+						uni.showToast({
+							title: "生成失败，请检查连接",
+							position: "bottom"
+						})
+						this.is_generating_next = false;
+					}
+
+				});
+			},
+			toggle_speech_recognition() {
+				if (this.is_recording) {
+					this.stop_record();
+				} else {
+					this.start_record();
+				}
+			},
+			start_record() {
+				this.is_recording = true;
+				this.recorder_manager = uni.getRecorderManager();
+				this.recorder_manager.onStart(() => {
+
+					console.log("开始录音")
+					uni.showToast({
+						title: "开始录音",
+						position: "bottom",
+						duration: 1000,
+					})
+				});
+
+				this.recorder_manager.onStop((res) => {
+					console.log('录音停止', res);
+					this.audio_path = res.tempFilePath; // 获取音频文件路径
+					this.start_speech_recognition(); // 上传音频文件
+					uni.showToast({
+						title: "录音结束",
+						position: "bottom",
+						duration: 1000,
+					})
+				});
+
+				this.recorder_manager.onError((err) => {
+					console.log("录音错误", err);
+					this.is_recording = false;
+				})
+
+				this.recorder_manager.start({
+					format: 'MP3', // 设置音频格式
+					duration: 10000
+				});
+
+
+			},
+			stop_record() {
+				this.is_recording = false;
+				this.recorder_manager.stop();
+			},
+			start_speech_recognition() {
+				uni.uploadFile({
+					url: 'http://152.136.47.111:25565/voice_recognition',
+					filePath: this.audio_path,
+					name: 'file',
+					success: (res) => {
+						console.log("成功", res);
+						var return_data = JSON.parse(res.data);
+						this.prompt = return_data.result;
+						console.log(this.prompt);
+					},
+					fail: (err) => {
+						console.log("失败", err);
+						uni.showToast({
+							title: "语音识别失败，请检查连接",
+							position: "bottom"
+						})
+					}
+
+				})
+			},
+			download_data(data_url, type) {
+				uni.downloadFile({
+					url: data_url,
+					success: (res) => {
+						console.log("下载成功");
+						console.log(res.tempFilePath);
+						// this.img_path[type] = res.tempFilePath;
+						// if (type == "next_step") {
+						// 	this.drawNextBackGround();
+						// }
+						this.img_path["ref"] = res.tempFilePath;
+					},
+					fail: (err) => {
+						console.log("下载失败", err);
+					},
+				})
+			},
+			close() {
+				uni.redirectTo({
+					url: "/pages/model_select/model_select"
+				});
+			},
+			change_head_toggle_visual() {
+				this.head_toggle_visible = !this.head_toggle_visible;
+			},
+			change_left_toggle_visual() {
+				this.left_toggle_visible = !this.left_toggle_visible;
+			},
+
+			// 拖动开始
+			startDrag(event, type) {
+				this.isDragging = true; // Set dragging to true when touch starts
+				const touch = event.touches[0];
+				this.startX = touch.clientX;
+				this.startY = touch.clientY;
+				if (type == "tool") {
+					this.offsetX = this.tool_currentX; // Save current button position as offset
+					this.offsetY = this.tool_currentY;
+				} else if (type == "confirm") {
+					this.offsetX = this.confirm_btn_currentX; // Save current button position as offset
+					this.offsetY = this.confirm_btn_currentY;
+				} else {
+					this.offsetX = this.ref_currentX; // Save current button position as offset
+					this.offsetY = this.ref_currentY;
+				}
+			},
+
+			// Dragging in progress
+			dragging(event, type) {
+				if (!this.isDragging) return;
+				const touch = event.touches[0];
+				const deltaX = touch.clientX - this.startX;
+				const deltaY = touch.clientY - this.startY;
+
+
+				if (type == "tool") {
+					// 限制按钮移动范围
+					const buttonWidth = 42; // 按钮宽度
+					const buttonHeight = 42; // 按钮高度
+					const margin = -10; // 边距
+					this.tool_currentX = Math.min(
+						Math.max(this.offsetX + deltaX, margin),
+						this.canvasWidth - buttonWidth - margin
+					);
+					this.tool_currentY = Math.min(
+						Math.max(this.offsetY + deltaY, margin),
+						this.canvasHeight - buttonHeight - margin
+					);
+				} else if (type == "confirm") {
+					const buttonWidth = 96; // 按钮宽度
+					const buttonHeight = 42; // 按钮高度
+					const margin = -20; // 边距
+					const w_margin = -60;
+					this.confirm_btn_currentX = Math.min(
+						Math.max(this.offsetX + deltaX, w_margin),
+						this.canvasWidth - buttonWidth - w_margin
+					);
+					this.confirm_btn_currentY = Math.min(
+						Math.max(this.offsetY + deltaY, margin),
+						this.canvasHeight - buttonHeight - margin
+					);
+				} else {
+					const buttonWidth = this.ref_width; // 按钮宽度
+					const buttonHeight = this.ref_height; // 按钮高度
+					const margin = -50;
+					this.ref_currentX = Math.min(
+						Math.max(this.offsetX + deltaX, margin),
+						this.canvasWidth - buttonWidth - margin
+					);
+					this.ref_currentY = Math.min(
+						Math.max(this.offsetY + deltaY, margin),
+						this.canvasHeight - buttonHeight - margin
+					);
+				}
+			},
+
+
+
+			// Dragging ends
+			endDrag() {
+				this.isDragging = false; // Set dragging to false when touch ends
+			},
+			// updateButtonPosition() {
+			// 	this.$nextTick(() => { // Ensure DOM updates are complete
+			// 		const button = this.$refs.toggleButton;
+			// 	});
+			// },
+			confirm() {
+				this.$emit('confirm');
+			},
+
+
+			initCanvas() {
+				const query = uni.createSelectorQuery().in(this); // 在当前组件实例中查找
+				query.select('.autograph-box') // 选择目标节点
+					.boundingClientRect((rect) => {
+						if (rect) {
+							// 获取 Canvas 的宽高
+							this.canvasWidth = rect.width;
+							this.canvasHeight = rect.height;
+
+							// 在宽高获取成功后调用绘制方法
+							this.drawBackGround();
+						} else {
+							console.error('未能获取 .autograph-box 节点信息，请检查是否正确渲染');
+						}
+					})
+					.exec(); // 执行查询
+			},
+			drawBackGround() {
+
+				this.context.drawImage('/static/draw/bg.png', 0, 0, this.canvasWidth, this.canvasHeight);
+				this.context.draw();
+			},
+			// drawNextBackGround() {
+			// 	this.context.drawImage(this.img_path.next_step, 0, 0, this.canvasWidth, this.canvasHeight);
+			// 	this.context.draw();
+			// },
 			getIphoneBottom() {
 				uni.getSystemInfo({
 					success: res => {
@@ -193,7 +695,7 @@
 			},
 			//撤回
 			goBack() {
-				this.context.draw()
+				this.drawBackGround();
 				this.history.pop();
 				this.history.forEach((item, index) => {
 					let {
@@ -224,7 +726,7 @@
 			//清空画布
 			clear() {
 				this.history = [];
-				this.context.draw()
+				this.drawBackGround();
 			},
 			canvasStart(event) {
 				let {
@@ -290,15 +792,59 @@
 </script>
 
 <style lang="scss" scoped>
-	.hidden {
-		height: 0 !important;
-		overflow: hidden;
-		border: 0 !important;
+	.floating-toolbar {
+		position: fixed;
+		top: 0px;
+		left: 20px;
+		z-index: 999;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
+
+
+
+
+	.toolbar-content {
+		display: flex;
+		align-items: center;
+		background-color: rgba(0, 0, 0, 0.7);
+		border-radius: 30px;
+		padding: 10px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	}
+
+	.toolbar-icon {
+		width: 40px;
+		height: 40px;
+		margin: 0 10px;
+		cursor: pointer;
+		transition: transform 0.2s ease;
+	}
+
+	.toolbar-icon:hover {
+		transform: scale(1.1);
+	}
+
+	.toolbar-submit {
+		padding: 8px 20px;
+		background-color: #5c6bc0;
+		color: white;
+		border-radius: 20px;
+		font-size: 16px;
+		cursor: pointer;
+		margin-left: 15px;
+		transition: background-color 0.3s ease;
+	}
+
+	.toolbar-submit:hover {
+		background-color: #3f51b5;
+	}
+
 
 	.autograph {
 		width: 100%;
-		height: 92%;
+		height: 100%;
 		box-sizing: border-box;
 		border: 1px dashed #ccc;
 		display: flex;
@@ -412,90 +958,102 @@
 		}
 	}
 
-	.roteRight {
-		transform: rotate(136deg);
+	.toggle-button {
+		position: fixed;
+		/* 使其固定在屏幕上 */
+		bottom: 20px;
+		/* 默认位置，可以根据需要设置 */
+		right: 20px;
+		/* 默认位置 */
+		width: 50px;
+		height: 50px;
+		background-color: #5c6bc0;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+		cursor: pointer;
+		z-index: 9999;
+		transition: background-color 0.3s ease;
 	}
 
-	.roteLeft {
-		transform: rotate(0deg);
+	.toggle-icon {
+		display: block;
+		width: 24px;
+		/* 设置图标的宽度 */
+		height: 24px;
+		/* 设置图标的高度 */
+		object-fit: contain;
+		/* 确保图标适应容器 */
 	}
 
-	.action-open {
-		animation: bounceIn 1s;
+	.toggle-button:hover {
+		transform: scale(1.1);
+
 	}
 
-	.action-close {
-		animation: bounceOut 0.5s forwards;
+
+
+	.vertical-toolbar {
+		position: fixed;
+		top: 20%;
+		/* 工具栏的位置 */
+		left: 10px;
+		/* 紧贴屏幕左侧 */
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: rgba(0, 0, 0, 0.7);
+		border-radius: 10px;
+		padding: 10px 0;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+		z-index: 1000;
+		transition: transform 0.3s ease;
 	}
 
-	@keyframes bounceIn {
-
-		0%,
-		20%,
-		40%,
-		60%,
-		80%,
-		to {
-			-webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
-			animation-timing-function: cubic-bezier(.215, .61, .355, 1)
-		}
-
-		0% {
-			opacity: 0;
-			-webkit-transform: scale3d(.3, .3, .3);
-			transform: scale3d(.3, .3, .3)
-		}
-
-		20% {
-			-webkit-transform: scale3d(1.1, 1.1, 1.1);
-			transform: scale3d(1.1, 1.1, 1.1)
-		}
-
-		40% {
-			-webkit-transform: scale3d(.9, .9, .9);
-			transform: scale3d(.9, .9, .9)
-		}
-
-		60% {
-			opacity: 1;
-			-webkit-transform: scale3d(1.03, 1.03, 1.03);
-			transform: scale3d(1.03, 1.03, 1.03)
-		}
-
-		80% {
-			-webkit-transform: scale3d(.97, .97, .97);
-			transform: scale3d(.97, .97, .97)
-		}
-
-		to {
-			opacity: 1;
-			-webkit-transform: scaleX(1);
-			transform: scaleX(1)
-		}
+	.toolbar-icon-wrapper {
+		margin: 10px 0;
 	}
 
-	@keyframes bounceOut {
-		20% {
-			-webkit-transform: scale3d(.9, .9, .9);
-			transform: scale3d(.9, .9, .9)
-		}
-
-		50%,
-		55% {
-			opacity: 1;
-			-webkit-transform: scale3d(1.1, 1.1, 1.1);
-			transform: scale3d(1.1, 1.1, 1.1)
-		}
-
-		to {
-			opacity: 0;
-			-webkit-transform: scale3d(.3, .3, .3);
-			transform: scale3d(.3, .3, .3);
-			display: none;
-		}
+	.toolbar-submit-wrapper {
+		margin-top: 20px;
+		display: flex;
+		justify-content: center;
 	}
 
-	.hover-class {
-		opacity: 0.6;
+	.vertical-toolbar .toolbar-icon {
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		transition: transform 0.2s ease;
 	}
+
+	.vertical-toolbar .toolbar-icon:hover {
+		transform: scale(1.1);
+	}
+
+	.vertical-toolbar .toolbar-submit {
+		padding: 8px 20px;
+		background-color: #5c6bc0;
+		color: white;
+		border-radius: 20px;
+		font-size: 16px;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+
+	.vertical-toolbar .toolbar-submit:hover {
+		background-color: #3f51b5;
+	}
+
+	.vertical-toolbar.visible {
+		display: flex;
+	}
+
+	.vertical-toolbar.hidden {
+		display: none;
+	}
+
+	@import url("index.css");
 </style>

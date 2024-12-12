@@ -16,8 +16,14 @@
             "type" : "uniCloud"
         },
         {
+            "openVueDevtools" : false,
             "playground" : "standard",
             "type" : "uni-app:app-android"
+        },
+        {
+            "openVueDevtools" : false,
+            "playground" : "standard",
+            "type" : "uni-app:app-ios"
         }
     ]
 }

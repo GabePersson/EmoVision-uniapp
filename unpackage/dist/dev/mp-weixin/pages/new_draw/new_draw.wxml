@@ -1,0 +1,1 @@
+<view class="box"><th-autograph vue-id="44509840-1" isDownload="{{false}}" canvas-id="autograph" data-event-opts="{{[['^submit',[['next']]]]}}" bind:submit="__e" bind:__l="__l"></th-autograph></view>

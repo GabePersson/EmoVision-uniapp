@@ -1,0 +1,1 @@
+<view class="search-container data-v-00b5c4dc"><input class="search-input data-v-00b5c4dc" placeholder="{{placeholder}}" v-model="{{inputValue}}" data-event-opts="{{[['input',[['handle_input',['$event']]]]]}}" bindinput="__e"/><image class="search-icon data-v-00b5c4dc" src="{{iconSrc}}"></image></view>

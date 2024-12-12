@@ -1,7 +1,12 @@
+import TabBar from '@/components/TabBar/index.vue'
+import NavBar from '@/components/NavBar/index.vue'
+import SearchBar from '@/components/SearchBar/index.vue'
+import SwiperWindow from '@/components/SwiperWindow/index.vue'
+import Modal from '@/components/Modal/index.vue'
 // #ifndef VUE3
 import Vue from 'vue'
 import App from './App'
-import TabBar from '@/components/TabBar/index.vue'
+
 
 Vue.config.productionTip = false
 
@@ -27,3 +32,7 @@ export function createApp() {
 // #endif
 
 Vue.component('TabBar', TabBar)
+Vue.component('NavBar', NavBar)
+Vue.component('SearchBar', SearchBar)
+Vue.component('SwiperWindow', SwiperWindow)
+Vue.component('Modal', Modal)

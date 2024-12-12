@@ -1,17 +1,9 @@
 <template>
-	<view style="height: 180rpx;">
-		<view class="content" :style="{zIndex}">
-			<view class="tabber_box">
-				<view v-for="(item,index) in tabBars" :key="index"
-					:style="{width:`${ratio}%`,display:'flex',justifyContent:'space-around',margin: '24rpx 0'}">
-					<view class="tabber_item" @click="onNav(item.pagePath)">
-						<image v-if="currentPath === item.pagePath" :src="item.iconPath"></image>
-						<image v-else :src="item.selectedIconPath"></image>
-						<text
-							:style="{color:currentPath === item.pagePath ? item.selectedColor : item.color}">{{item.name}}</text>
-					</view>
-				</view>
-			</view>
+	<view class="tab-bar">
+		<view v-for="(item, index) in tabBars" :key="index"
+			:class="{ 'tab-item': true, 'selected': selectedTab === item.pagePath }" @click="switchTab(item.pagePath)">
+			<image :src="selectedTab === item.pagePath ? item.selectedIconPath : item.iconPath"
+				:class="['tab-icon',item.pagePath=='/pages/model_select/model_select'?'new':'other']" />
 		</view>
 	</view>
 </template>
@@ -19,69 +11,60 @@
 <script>
 	export default {
 		props: {
-			currentPath: { // 当前页面路径
+			selectedTab: {
 				type: String,
-				default: '/pages/index/home',
-			},
-			zIndex: { // 界面层级
-				type: Number,
-				default: 10
+				default: '/pages/home/home'
 			}
-
 		},
 		data() {
 			const color = '#FFFFFF66';
 			const selectedColor = '#FFF';
 			return {
+				isHidden: false, // 初始状态为隐藏
 				tabBars: [{
 						name: '首页',
-						iconPath: '../../static/TabBar/home_activate.png',
-						selectedIconPath: '../../static/TabBar/home_unactivate.png',
-						pagePath: '/pages/index/home',
+						iconPath: '../../static/TabBar/home_unactivate.png',
+						selectedIconPath: '../../static/TabBar/home_activate.png',
+						pagePath: '/pages/home/home',
 						color,
 						selectedColor,
 					},
 					{
-						name: '邀请',
-						iconPath: '../../static/logo.png',
-						// selectedIconPath: '../../static/tabbar/selectd_lnvite.png',
-						pagePath: '/pages/index/model_select',
+						name: '新建',
+						iconPath: '../../static/TabBar/New.png',
+						selectedIconPath: '../../static/TabBar/New.png',
+						pagePath: '/pages/model_select/model_select',
 						color,
 						selectedColor,
 					},
 					{
 						name: '关于',
-						iconPath: '../../static/TabBar/me_activate.png',
-						selectedIconPath: '../../static/TabBar/me_unactivate.png',
-						pagePath: '/pages/index/about',
+						iconPath: '../../static/TabBar/me_unactivate.png',
+						selectedIconPath: '../../static/TabBar/me_activate.png',
+						pagePath: '/pages/about/about',
 						color,
 						selectedColor,
 					}
-
-				],
-				ratio: 0,
-				isLogin: false,
-			}
-		},
-		mounted() {
-			this.ratio = 100 / this.tabBars.length;
+				]
+			};
 		},
 		methods: {
-			onNav(url) {
-				console.log(url);
-				if (url == '/pages/index/model_select') {
-					console.log('enter');
-					uni.reLaunch({
+			switchTab(url) {
+				if (url === '/pages/model_select/model_select') {
+					uni.redirectTo({
 						url: url
-					})
-				} else if (this.currentPath !== url) uni.switchTab({
-					url
-				});
+					});
+				} else if (this.selectedTab !== url) {
+					uni.switchTab({
+						url: url
+					});
+				}
 			}
 		}
-	}
+	};
 </script>
 
-<style lang="scss" scoped>
-	@import './index.scss';
+
+<style scoped>
+	@import './index.scss'
 </style>

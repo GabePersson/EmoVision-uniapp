@@ -1,0 +1,33 @@
+.search-container.data-v-72a848fa {
+    width: 90%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: #f0f3f7;
+    border-radius: 20px; /* 圆角 */
+    padding: 0 15px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 边框阴影 */
+    margin: 10px auto;
+}
+.search-input.data-v-72a848fa {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #333;
+}
+.search-input.data-v-72a848fa::-webkit-input-placeholder {
+    color: #b0b3c6; /* placeholder 颜色 */
+}
+.search-input.data-v-72a848fa::placeholder {
+    color: #b0b3c6; /* placeholder 颜色 */
+}
+.search-icon.data-v-72a848fa {
+    width: 20px;
+    height: 20px;
+    tint-color: #7b9edb; /* 设置图标颜色 */
+}
+

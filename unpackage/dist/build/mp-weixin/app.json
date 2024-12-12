@@ -1,12 +1,11 @@
 {
   "pages": [
-    "pages/index/home",
-    "pages/index/history",
-    "pages/index/about",
-    "pages/index/draw",
-    "pages/index/new_draw",
-    "pages/index/model_select",
-    "pages/index/watch_data"
+    "pages/home/home",
+    "pages/history/history",
+    "pages/about/about",
+    "pages/new_draw/new_draw",
+    "pages/model_select/model_select",
+    "pages/watch_data/watch_data"
   ],
   "subPackages": [],
   "window": {
@@ -14,20 +13,21 @@
     "backgroundColor": "#ffffff"
   },
   "tabBar": {
-    "height": "0",
+    "custom": true,
     "list": [
       {
-        "pagePath": "pages/index/home"
+        "pagePath": "pages/home/home"
       },
       {
-        "pagePath": "pages/index/model_select"
-      },
-      {
-        "pagePath": "pages/index/about"
+        "pagePath": "pages/about/about"
       }
     ]
   },
   "usingComponents": {
-    "tab-bar": "/components/TabBar/index"
+    "tab-bar": "/components/TabBar/index",
+    "nav-bar": "/components/NavBar/index",
+    "search-bar": "/components/SearchBar/index",
+    "swiper-window": "/components/SwiperWindow/index",
+    "modal": "/components/Modal/index"
   }
 }

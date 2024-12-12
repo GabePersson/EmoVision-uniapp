@@ -1,0 +1,1 @@
+<view class="image-carousel"><swiper class="swiper-container" autoplay="true" interval="3000" circular="true" indicator-dots="true" indicator-active-color="#7F5FFF"><block wx:for="{{carousel_images}}" wx:for-item="image" wx:for-index="index" wx:key="index"><swiper-item><image class="swiper-image" src="{{image.src}}"></image></swiper-item></block></swiper></view>

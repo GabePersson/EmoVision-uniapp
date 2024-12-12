@@ -1,0 +1,25 @@
+
+.custom-nav-bar.data-v-c3cb4964 {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 120px;
+		/* 标题栏高度 */
+		display: flex;
+		align-items: center;
+		background: linear-gradient(135deg, #5f76f3, #00e0ff);
+		/* 渐变背景 */
+		color: white;
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+		z-index: 10;
+		padding-left: 20px;
+		/* 控制左侧内边距 */
+}
+.nav-title.data-v-c3cb4964 {
+		font-size: 24px;
+		font-weight: bold;
+		color: white;
+		letter-spacing: 1px;
+		padding-bottom: 20px;
+}
+

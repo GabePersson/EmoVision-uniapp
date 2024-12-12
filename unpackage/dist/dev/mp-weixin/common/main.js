@@ -21,7 +21,17 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
 var TabBar = function TabBar() {
   __webpack_require__.e(/*! require.ensure | components/TabBar/index */ "components/TabBar/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/TabBar/index.vue */ 87));
+    return resolve(__webpack_require__(/*! @/components/TabBar/index.vue */ 85));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var NavBar = function NavBar() {
+  __webpack_require__.e(/*! require.ensure | components/NavBar/index */ "components/NavBar/index").then((function () {
+    return resolve(__webpack_require__(/*! @/components/NavBar/index.vue */ 92));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var SearchBar = function SearchBar() {
+  __webpack_require__.e(/*! require.ensure | components/SearchBar/index */ "components/SearchBar/index").then((function () {
+    return resolve(__webpack_require__(/*! @/components/SearchBar/index.vue */ 99));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 _vue.default.config.productionTip = false;
@@ -29,6 +39,8 @@ _App.default.mpType = 'app';
 var app = new _vue.default(_objectSpread({}, _App.default));
 createApp(app).$mount();
 _vue.default.component('TabBar', TabBar);
+_vue.default.component('NavBar', NavBar);
+_vue.default.component('SearchBar', SearchBar);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["createApp"]))
 
 /***/ }),

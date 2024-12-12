@@ -1,44 +1,32 @@
 {
 	"pages": [{
-			"path": "pages/index/home",
+			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "Emovision"
+				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/index/history",
+			"path": "pages/history/history"
+		},
+		{
+			"path": "pages/about/about",
 			"style": {
-				"navigationBarTitleText": "Emovision"
+				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/index/about",
+			"path": "pages/new_draw/new_draw",
 			"style": {
-				"navigationBarTitleText": "Emovision"
+				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/index/draw",
-			"style": {
-				"navigationBarTitleText": "Emovision"
-			}
+			"path": "pages/model_select/model_select"
 		},
 		{
-			"path": "pages/index/new_draw",
+			"path": "pages/watch_data/watch_data",
 			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		{
-			"path": "pages/index/model_select",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		{
-			"path": "pages/index/watch_data",
-			"style": {
-				"navigationBarTitleText": ""
+				"disableScroll": true
 			}
 		}
 
@@ -51,16 +39,12 @@
 		}
 	},
 	"tabBar": {
-		"height": "0px",
-		"custome": true,
+		"custom": true,
 		"list": [{
-				"pagePath": "pages/index/home"
+				"pagePath": "pages/home/home"
 			},
 			{
-				"pagePath": "pages/index/model_select"
-			},
-			{
-				"pagePath": "pages/index/about"
+				"pagePath": "pages/about/about"
 			}
 		]
 

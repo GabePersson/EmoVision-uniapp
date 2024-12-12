@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/Modal/index"],{1886:function(t,n,c){"use strict";c.r(n);var e=c("c76e"),l=c("2b20");for(var i in l)["default"].indexOf(i)<0&&function(t){c.d(n,t,(function(){return l[t]}))}(i);c("1d78");var a=c("828b"),o=Object(a["a"])(l["default"],e["b"],e["c"],!1,null,null,null,!1,e["a"],void 0);n["default"]=o.exports},"1d78":function(t,n,c){"use strict";var e=c("6c11"),l=c.n(e);l.a},"2b20":function(t,n,c){"use strict";c.r(n);var e=c("62ec"),l=c.n(e);for(var i in e)["default"].indexOf(i)<0&&function(t){c.d(n,t,(function(){return e[t]}))}(i);n["default"]=l.a},"62ec":function(t,n,c){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;n.default={data:function(){return{showModal:!1,title:"弹窗标题",content:"这里是弹窗内容",confirmText:"确认",cancelText:"取消",confirmCallback:null,cancelCallback:null}},methods:{openModal:function(t){var n=t.title,c=t.content,e=t.confirmText,l=t.cancelText,i=t.confirmCallback,a=t.cancelCallback;this.title=n||this.title,this.content=c||this.content,this.confirmText=e||this.confirmText,this.cancelText=l||this.cancelText,this.confirmCallback=i,this.cancelCallback=a,this.showModal=!0},closeModal:function(){this.showModal=!1},confirmAction:function(){this.confirmCallback&&this.confirmCallback(),this.closeModal()},cancelAction:function(){this.cancelCallback&&this.cancelCallback(),this.closeModal()}}}},"6c11":function(t,n,c){},c76e:function(t,n,c){"use strict";c.d(n,"b",(function(){return e})),c.d(n,"c",(function(){return l})),c.d(n,"a",(function(){}));var e=function(){var t=this.$createElement;this._self._c},l=[]}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/Modal/index-create-component',
+    {
+        'components/Modal/index-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('df3c')['createComponent'](__webpack_require__("1886"))
+        })
+    },
+    [['components/Modal/index-create-component']]
+]);

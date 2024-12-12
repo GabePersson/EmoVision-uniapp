@@ -1,0 +1,1 @@
+<view class="box"><th-autograph class="vue-ref" vue-id="44509840-1" isDownload="{{false}}" background_name="{{draw_name}}" canvas-id="autograph" data-ref="child" data-event-opts="{{[['^confirm',[['next']]]]}}" bind:confirm="__e" bind:__l="__l"></th-autograph></view>

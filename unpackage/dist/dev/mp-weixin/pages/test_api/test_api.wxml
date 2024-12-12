@@ -1,0 +1,1 @@
+<view><button data-event-opts="{{[['tap',[['face_thread',['$event']]]]]}}" bindtap="__e">面部分析</button><button>文本分析</button><uni-easyinput vue-id="36a636c0-1" bind:__l="__l"></uni-easyinput><button>绘画分析</button></view>

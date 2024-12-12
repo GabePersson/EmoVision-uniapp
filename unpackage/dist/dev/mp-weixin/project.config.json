@@ -8,7 +8,7 @@
         "urlCheck": false,
         "es6": false,
         "postcss": false,
-        "minified": false,
+        "minified": true,
         "newFeature": true,
         "bigPackageSizeSupport": true,
         "babelSetting": {
@@ -20,8 +20,18 @@
     "compileType": "miniprogram",
     "libVersion": "3.6.5",
     "appid": "wx8f5972c8466f14ec",
-    "projectname": "Emovision-uniapp",
-    "condition": {},
+    "projectname": "Emovision",
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "pages/test_api/test_api",
+                    "pathName": "pages/test_api/test_api",
+                    "query": ""
+                }
+            ]
+        }
+    },
     "editorSetting": {
         "tabIndent": "insertSpaces",
         "tabSize": 4

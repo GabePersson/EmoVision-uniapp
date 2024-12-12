@@ -776,7 +776,7 @@ function populateParameters(result) {
 
   var parameters = {
     appId: "__UNI__9DA09B3",
-    appName: "Emovision-uniapp",
+    appName: "Emovision",
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
@@ -875,7 +875,7 @@ var getAppBaseInfo = {
     var hostLanguage = language.replace('_', '-');
     result = sortObject(Object.assign(result, {
       appId: "__UNI__9DA09B3",
-      appName: "Emovision-uniapp",
+      appName: "Emovision",
       appVersion: "1.0.0",
       appVersionCode: "100",
       appLanguage: getAppLanguage(hostLanguage),
@@ -1557,7 +1557,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision-uniapp","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8923,7 +8923,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision-uniapp","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8944,14 +8944,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision-uniapp","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision-uniapp","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9047,7 +9047,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision-uniapp","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Emovision","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9684,7 +9684,12 @@ function normalizeComponent (
 /* 103 */,
 /* 104 */,
 /* 105 */,
-/* 106 */
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */
 /*!*************************************************************************************************************************************!*\
   !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
   \*************************************************************************************************************************************/
@@ -10187,14 +10192,14 @@ var fontData = [{
 exports.fontData = fontData;
 
 /***/ }),
-/* 107 */,
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */,
 /* 112 */,
 /* 113 */,
-/* 114 */
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */
 /*!****************************************************************************************************************************************!*\
   !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \****************************************************************************************************************************************/
@@ -10209,9 +10214,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 115));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 116));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 117));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 120));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 121));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 122));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -10220,7 +10225,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 115 */
+/* 120 */
 /*!***************************************************************************************************************************************!*\
   !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \***************************************************************************************************************************************/
@@ -10230,7 +10235,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
 
 /***/ }),
-/* 116 */
+/* 121 */
 /*!********************************************************************************************************************************************!*\
   !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \********************************************************************************************************************************************/
@@ -10240,7 +10245,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
 
 /***/ }),
-/* 117 */
+/* 122 */
 /*!********************************************************************************************************************************************!*\
   !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \********************************************************************************************************************************************/
@@ -10250,14 +10255,14 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
 /* 123 */,
 /* 124 */,
-/* 125 */
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -10266,11 +10271,11 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 126)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 131)();
 module.exports = runtime;
 
 /***/ }),
-/* 126 */
+/* 131 */
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -10591,7 +10596,7 @@ function _regeneratorRuntime() {
 module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 127 */
+/* 132 */
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -10629,206 +10634,6 @@ function _asyncToGenerator(fn) {
   };
 }
 module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 128 */
-/*!***********************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/clear.png ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACfElEQVR4nO2Vi23aUBiFjyeIN0g6Qc0ENRuQCXqZoDBB2IDbCYAJQibgMkGcCUo3cCdovz/EGD8Am0aqVOWTjg7y/zoRBCL9Yz4C/H8BJpNJgj0g8wxNvfc7naBXAJaPsG8oFcujKFrO5/PvvH6FeoJtUIwKcjQkRIY36ByA5QvMqcmS5WPqCa83KEbGT3SLjBy1hojQRVi+wJxKtihBN8hYo1Tl8RXHHHNLSV+RkaMBz3c6IkJnYckCc9rzC6UsySb7vzioDFHwelxv0LdUGeKJ2gg/cDYAwwvMqWTIgqA3qCdYUBliRd2pBn0/sDtJL9Rt5kCEWmFogTlVmbLA4wfoS7Ag3gbffvx4zxM9I/xAa4DaUJ0xS5Y6gv47nu1Ug+fHe+ztS3ytrxGgZciJQfSAChoh6rTsSZnJ8AqVAAyNsEdkVIaoOUm2tOBkCHqtz2lPZU+deoBnLEHGoD5E3elCCHruxJcUukHG2nt/j7dSD/AbM7YMpWqBHqfLIRIsqAyxpGeMN4jQAQZ32n975egTQ+YN6HPqH2JKj8cr1APMVH7YMjRkJscb0OvUL0TmvR/gFSoBDIYy7DMy7PWQwRxvQK/T5RBB0hckao17jQcMxFjQO4SglmDPyNjyPFWNRgCDwRgL+osQaKf9v3SMjHvm13iFCLXC0hgLuj7EMSvmnFo4GcBgaYwFdQ8xU/khLljR73SCswEMlsZYUIcQ9I6wR1Swos/pDBcDGCyOsaAzIehJsA2KkbGi7nSBTgEMDtjioJYQkyuPG50DGByyA0FliBxlKFVJ5+NGrwBGS4hjeh03egcoIMhM+5/cW/SCZhxf4724OsB78RHgD0HZOTAhCnZyAAAAAElFTkSuQmCC"
-
-/***/ }),
-/* 129 */
-/*!**********************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/back.png ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACeElEQVR4nO2UjXGbQBCFHxUYVRBSQXAFkSuIUkFwBYIKhCrQpQKhCixXYEpAFUQdhFRAvtUpDoxQ9GMrGs/4m3nzMOztPs4nAl2Z9wBvO0CaphMsRvfOuRo/mbMCMDjEnlCMjCkBcp3ByQEYbkMf0AClaI7+TwCGJ5Jm6BcaOeeqNE0bri8fgEETLJe0QkMG1rjdb7DLBWBAiNlbJ5IWDErUgueXC0BzG/6EYpQxxOEdqGmw1w9A4xh7QAOUMGCJ70Bdjd2gMgiCZdM0j9SudSS9AWg6wubIng9pWOG9UDsUAeV36RMyCvldWesANqBDlmVj3sJxuUI2vMaPgjCRMJRIatiRfDabfed6L50ANHDYGC1Q6k4Y3oY+kSSHvqCCPvd4LwHasF30Ay1YkOgVoGcuaYL2hgjQBooj+QB7i8+Bvrl8iIy+tisdAvQMxVYwRoX8ghp/MfRdYp/RLT3XatEJYFCcYjNUoTsW1PiLoGUkv7sL+iVqsRPAYMEIK8RJRncsqvBeqB3Kv90znP6SX9KKdTV/bqAul/9XDNr3ewMYLIixJbpB9yyy6x2o+4mFqI+SMI6f4iN1kfwuZPRy+Ia9AQwWhVgp/4HJWTfFO1DTYFOe5drCvaH4hsh/Dz6gCn1FpaQ1tUNtCdBBaFhI+oYK+Teo8Q08a7BOgDY8H2EO3aAKxc65Ab7hqAAGjVJship0R5Mat/v/DGBQE2Kl/E4aH6lfC44OYNBohBVqHc70iAAGdSG2lt+JW+or/LQABo1ibImsUYbm6GAAg7WROLBuO9w4OYBBoxAr9XdLjwrQx1kB/kCQXFIkLt32TJxKgK7Ke4CrB/gNcd0RMGeAEC8AAAAASUVORK5CYII="
-
-/***/ }),
-/* 130 */
-/*!************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/eraser.png ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACSElEQVR4nN2UjXHaQBSEVxVYqSDuIJcKQiqIShAd4AqCK/ClAqAC7Ap86UDpgBLkCsh3+A4hoUPiJ+OZfDM7y4zee7saGzJ9MP9Hgdlsdp9l2Q8+1tvt9sVaW/N5FFcXILyU9IRy5KnRd0pU+CBXFQjhC9SlRg+UWGqAiwv0hL+hO3TIdKjERQUIL7A1ivjwid7/DM/oDkVOlji7AOEGe0U58uzCCanw+NxpZImzCoTjh+Gerxyv8D1hzqldYs7cI94iQ6MIR7vhyTcL807tEkvmp/ieDA0Sjo0Oj7B3r/f/iS8o0iqRoZNwxGBnh0fY93tOiRIZShKWfbhBkdHhkXDHqV3ikTvzZIGwdHV4JNxzakrU1tpPvQXCcDd8xUKpK+DuDHtCO7iXHRVgJse64ZEpS0tdAHdLtX85X7hVtAowlGOvyKAUZ5fgbql2+Bsy1tpNt8AaK1BkhSxyan+fR5fgZqnj8An7Fa4M7WDQD5VqWDFUCnhmMKczS7DXvfkHFZY3V2BXgMECW6PIiqFSBzBjMKeRJZjvC/dvXuN7YoG5pJ/I85uhiXpgzmBOAyWYW2ClGnrDPX0FPEdHI8wazClRgucLrFRDMtwTC+TYRomjXZg3mFNnHn1DpRpOhnsytCN1lOWlekjMHzIY7tkX8CSOXlJiVLinVcCTONpbgtkcW6OJGkaHe44KeDhsMKd2iQrV6JCJjqlQjVI4Sb9iwd4CnkSJW/FAAYunC3hCiWf0Gd2ScQUiFCkwg27BhuylAqMK/Es+vMBfNkQaMJWEjocAAAAASUVORK5CYII="
-
-/***/ }),
-/* 131 */
-/*!*******************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/eraser-active.png ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACc0lEQVR4nN2WW27TQBSGz6kCSKhKY7oA2AFhBaSPCIlkCekOQGoQb6RvSInUsoKWFSQpQjwm7KDsIBsoTiFPpfXhn8GT2uNxfGtVqZ800nEyPv/n29hMd8z9EPC/f3hGF1dttFtQ/fHE2+kv8HMuKgv4J72uiBygbGAoFlzjHe/14BR1JpUEwvAjlDYLZn7nvRkcUwalBRLhQufotoVqBSR2syRKCfhf33ckCEYo/4NwfsAtCqQhVzRG1y38qsmSKCzgf+s15VKmKBsYq3BzzfX/f2WGzrkkCgno5tFwgBvuhQk36Hm2BFHfaw/3UcZgjFzopnb4miPT8y0JET7e7gx2Ua5gjEx0swLhBrU+yMXlGOVzDI0twRhrKRtu8Kf9hvxezihFgjFSCXdW4U0MTZFwQ9hnRlEJov3t9rCfKhDuNEVZKdwQ9pvRtcTiSXvoOQXCybFwIfoC4y5VwD/ZeytCByg1EOCEgCvcUOkM2Csn0QQCnZjAunBDGYlEuFq8HtWa3qtP85jAr3FvRCwdlBrBad+o8aH9PBeRcIZHVs6VwNm4d8QsXQoRhJtrrh/FEhJ2T/CTH9Y66sgpRAvYL5douKGohDO8vtmyP1a0wNlkr4/iI0rFD9wcLXKQVyJvuAK52CEu4GxqyJIoEq5ALpqqu/98OceWs6lNmkQQ0Msi4QotoEhrWkTCIjNcsRJQuJqWlMgVrogJKFxN0yT0pfuzHOGxadE1ucMVCQGFSwKcYjveNB5sSM6LwEIzqm9+NoJOAUWKxI2ANxA+2YeHKNF+DaHEGLOeYvPGyC1gUCtlEARNlJXZYJ5H76dcArfJnQv8A98euTDEE3zcAAAAAElFTkSuQmCC"
-
-/***/ }),
-/* 132 */
-/*!***********************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/color.png ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADD0lEQVR4nO2W4XGbQBCFHxWYVBBUQVAFQRVYqsByBUEVhFTgSwXGFRhXYFyBcAXBFRhXQL7jkCMkkIQmM/7jb+bNg73dZX0GhKcP5nOAsweI49j3PO8bh6rr+tkYU3E4mlEDrFarq7qu5xxa7VJKyiXdMUyuEzlpgPbCiaRA0gvKUCmpQJYQRXK6QLmkawYpdQQPDWK3GbtFc/SEEprmGqDNj1vVaEV+qgN4qJe22SMKkW1k8JOgNpCUSvqO7E6kGuDQAGssRFMaFPg7rPmYXbe+YD1XD+Slkq7Q4BC9A1CYSPqJegtZj+R2x/KLnERA/BazQ62IlQJiudxOTIkVeIe9ASgIJP1BDxTM8U3sCj0Ryzn3Oc5QIO4PQ+N4eCgfK0VPYlO8g4c6UJDI/fUTCkoBsQy7RJUx5gu+BzmB3FNxgRbkZXgDa0u5m/maeKot+gZ4xR5IXKqFmG12id6I+3gv5Nk137SDb8NaKemVtSn+TmcAkkJsjRYkZngDcR9bim03Pc13IT+S28UH8g1uYzF2g6aECrxhd4Cl3FZNSCp1JvTJ5W480ae5BrFI7h6ZEcvV0ixuICkRk5PQxDmPJN2jCtnJrR+FOoP9QM/UhHgD8Rr7RSxRS3OhDSQk6g6QiHNkmRHPdSLUhmZrqy3EamxF3OANzYU2kDDH7tGEnJLzkOMMlXKPW4WfBb3mmO09o0+ult0BQmyNFiRl+H+D3o/YlL4+/k5nAAuJFZaZrcdwDNSHWEl9hdtf0kt+SWMOI534HkjlnvkJyRV+EtRFclvso13eUEI/g3foGyAQr030m/wYP0pbs0YvyKBA/yhQTq8K38NDe9AwlXv3Tyks8IOQH2M3yO5aqREMDeBjBbpAM5ra40HIX+rMF1jvABaahlgu92Uzo3GB90JuIPdvuyYv1QgGB7DQOMQy9BUlcvdFhXcgb47doxnruUZwcAALzX0slXsyKpTxOV7gVvaTfI7F6JmLh/gojg6wgUEiYSiSuze2uUOx6dmdY3hoNAwTSArEjpgD98YpeOhD+RzgL88GZDDN6PxsAAAAAElFTkSuQmCC"
-
-/***/ }),
-/* 133 */
-/*!******************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/color-active.png ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADbklEQVR4nO2WXU4aURTHzx2xTZQi6AKKKyisoPrYNC10BeAKigmYvnX61lSS6grEFThomj6KKxBXIC5ABxUTawmn/zPOAPPFjNTEF3/JzVzu3Hvu/3zcyyh6Yp4FTC3APNTTdH3zBl2iV/MnmVW9i96DeZAAs7lRYuYiKTQfqsNMLW2GdzMf6i2KSSwB1sbEOhFniemMlTI0xR2sbpPAlGOmFTxXMLaA1lKzibXMu+8dimCiAAkzX97s2B4fKY30Sd7J/MFVr6KYKrAMnWo983GzQRMIFSDG+Kp3iG5OKYKh+hb6sTB/f8nyXb9BRG8hYm2SiFABF83qMR45lVD5zPvNNvpD7sXd4D2nEZVPYVE5b1Yb2KA0SQTe+8FCHS++hi00D6orPCCJDtJO35YKdZ3AuVHbwbq0ejmz7uQfjrRIIhHgiID5buzwnaLbXCzUi3haY3TXL5FGR+LtfQR6BnbPqllVFMNhoqy5l70OdjqFvTyGXPgEDL1/kVge88LAo4DWhZEMnj5EJP/ptwmnQGka0vJD1liY+7Uyju9OUESxlxtsZsKDJjwokw3GxFgBrl0uFutp9AMRb+n2Nu0IH+fCqHawmwkH8vg5xCXA/FXLcZ+PfR6I4etemWYTRpBxL1Y6GFGEI87pMferFYz99NYC5owYhmos/NOAiLUIhYdG8NjawxKFGsGpWZU6IhvrpYOTf8+iPUzrqtR8Pu59f96sbeEe+ozuCWzl8LSAMARhVKCCtZGDV4DzG13yKo9C0jkeakEEeC812B9hHmwUeTDYc1IgRvgvG5jVUalkMW4Eghja9jjiFiAbBhThY3CxXz2kAeW9p8glQMBx6bIiA3kq0xSIEzQ333GiheovMOHPCf+Use4B5L2BwQJCvuwYicOoYCmN5gb3B0Kvj+feAXu5sW40XMVManupsFnBUCT2mmN0z5RSWwPGd4ONpmltSs61wpzxCRDsKJS8l0YYCPP9JWMXLz0A7ONHbj78gbTxdgEiVqNE/M8FFihAkGLCEWxhBkeJsFNwivD7iiyKUAGCLcLArNeYqFMquR2Uy7AzHgfYnYyVjqteg3Ay0LrM8kGKj1FpAAVXhJEKuq5rNy5YGw/7mFnnGasWMDQE53xXSyUrQdGJIraAcSTn1O9nSVPdSbURh6kEPCbPAv4B+5fnMODRhaoAAAAASUVORK5CYII="
-
-/***/ }),
-/* 134 */
-/*!*********************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/pen.png ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACEElEQVR4nM2V0XXaMABFnyYImaBigniDqhMknaBhgnqDmglQJygjwASFCUImwJmgZgL3ClBAlPSQxnJzz7k8Phy9ZzjBRv+Z9zegLEsr6SdaSVPv/YjMhsEEBoRypwPXjGjILCQDKHfa3X1kQ/mAzMbpgKmkLxgZM6BSRp4HUG4lrTGyQcuAhszG8YBK0jeMfKe8JLNyPGBNWB0YMqBWZgyG8oJ4wMiScqceiANKYoKREQOm6oE4YCHpI0aGDKjVA3HAL2KAgSfKrXoiDmiJyJIBTj1hKC/IB4yMGVDpjYRzjTFXvLWSmuBkMlmSCWGAVfoDNGfAHXkR/P2Aopu2bZ2kYq/VeRrkeD8mtxgMh7REJFw05KKQCVxnKfvQXlb2N2be+8+kDIaDZ8QtRhqcYS3JaqdTt4wYMTW8CQOc0qfgW1niChusJVntPq3jm6wZMDS82cKIe0k/8LUscbV3waG1XoCOcM0NRq4NL89wgZVUKX0kR56wFiXa5cp7Hw68GM6vlD7wPhlezsLFBTHAxr+y6CU4s9KlA3LAgDVhdSD9CnJCeaX07h/5ZIteBlAeiiulHP4Nc0Gx0+6unVLmlN+RyjJgX/wVtyUnPKJjQEN2N4DSATFBJ8nqPHO8j+UBg53AgKnO/34ENlh6vnOd0OWAGXGLx4RiH4SG/IMuBxTEQtIVznHmz9zxKZ0N+Fd+A1WYwwEt2F46AAAAAElFTkSuQmCC"
-
-/***/ }),
-/* 135 */
-/*!****************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/pen-active.png ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACjklEQVR4nM2WUW7aQBCG/3HaPkUJJgeoc4Jwg5LHqlJNT5DkBM0DkfoW8lYJpKQnKEfAVFUfgROUnCD0AMWOqrwkwPTfBSdgSAWtTfNJqx2vxM4/O7szCP4zT09A+O2Dp7fDFqCeqtR3StUjLmeGcMzQb5ZbUBQxQbY2XXe/EtHMhBkB4ZdyUUdg9BMU1/lSLUcrM2YE/AzKdS4c0LQocLbj1yrIEPobM8794IrmGEYv25telsdvuBfA6Cv8OKVpUcinHb96TDNT6HNMPzi5olsPE+TFs1339cceMsYKCL+eFHSg32nGdPJ+rYg1MBbQLB+r4pymRUSO3LfVOtaAFdAPym0Arzgs6zp+Qywg5JTj4DXAD759D2siFqCcYtaWf4MkLyCVpFJ8zL4YYhsqHmQUARLxXnWQQOYKEBDwBEqclyJsVXL4dbMH1SKbV4FnWmAYHhYTCXDh+rUz2hbhSKYgYgPaXVQBjVjcDV9iOWePo9LIl6rvaHELQgENTj5HTEQHDUe0N1LxxKGTqQ6ZBvFTtwLmuuC/02Ep7wIaOSIMQj06KnB9Kkjp5f3qLtfHhM2TQ1X9THNVrDNH0MXzjfaf6gdPustpj8PCVLv3Agwmx6PbQYWLB/ychfUBgp4CbRMVNtB131TNhkuTbHjiYJ/fi7HPaKQ5OBKt6ugxVhKQBXMdN5mCLElGTy5Zbwpcy54wKJ8qUMEUM88wK+zzVkY9X0MCRl/ijEwEWMdDeQ9R6yTBJXNfjCttagJMTxhd35yLmGgfLlqCgM4PY+eG1ATwktW52QHNecw/bEeOTc6RgL9JB1a5Bief4wE6VsGFs7V5MR31NKkJMIVL77TNHbf5GfCWNxZFnCQ1AX/Lb98qG1gGbWM8AAAAAElFTkSuQmCC"
-
-/***/ }),
-/* 136 */
-/*!**********************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/line.png ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABbklEQVR4nO2U0VHCQAAF31VArAA6kA6gA+2AUIGxg1ABZwXGDighJdCBKSEluMd5jmIOISTBj+zMzmP4uR24xOjGjAFjwP8JyLJszshau2cG4xDA4a9MKk8p6XmoEMPhM0nveEwhH1KzvRF+AXfIBI9x39NgN2wvGHQBqTgImyIclaQ1IaU65hDgICJhLK4wRikfUqkjvgIChCwl5ZIWGMOFbgip2av4FRAgJJUPmWITtTEm2263b3xujcEoRCRuPo3djz26p6VUC04GBAiZyf/sDxhjhy6k0gWcFRAgZCkfco8xckkvhNTsn1wUECAklQ+ZYBMV9yM/534YbAURCZNLesIYpfzTUipC64AAITP51/YCYxTyIZWOuDogQMhS/qApNlEjDT9f6wY7hZCMyXXifsg/LTu2+wAHDQljcYUxCiLWvQQECJkzFhfYxF2vAQFCHhmLU/zOMAEBQnIxWGPOX1AMGtDEGDAG3DzgA9ZcbeGwosGLAAAAAElFTkSuQmCC"
-
-/***/ }),
-/* 137 */
-/*!*****************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/line-active.png ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB0ElEQVR4nO2WQU7CUBCGZ4rGhYTaeAC8gd5AXRqDcAPhBEICxuVjZ4BFPYF4A4QYl3IEbiAXwBKjGwM8/1daE+RBAGlx0S+ZdKYZyh/eP0OZNkwkIBLwfwQ4T6UjXMg6r3ZwCQ1XQK9RumeWWVIwtTnGhbCEsPN8cyC/Bq/IJ5CS64a5W7BORR9lYLi/wFuj2EdmIv1NHw22la6VkQcCI8hplrJyJG1UOhGAu2zInJWqtWnNuAIUzovYG71/2LhxiVKP8sf2Vs46u+3SmsD3TeK0iidyRIKIjhFaJI7FSMTL6/DHlAAf71gEOpIodfSZjLyVrjwgXxlGzMQ7ljxLyqPTxC0dHTaosKo/5grw8UbVRppG6JHc4J1YYVl/LCTAx/OHEnKI0IIHCkrE7xb1B/qXx/OHjU+bKDVwl4nFIv5gxEqM/fEpmOQVSj1qbJnK8/yxsgAfzx91mje2aq3vxMo6f/xZgI/rjyHV8cQkSh0Y2+m1zoi14jSLeRhV4MkmSg2MtY5/21SlgQJtATD2x/y1ro5lP1PNoSc41EuOHGBaZviDE3ErUAE+Tus6I4cjNbZJlD+EJsCn91gU7lpXhjSwJy6q9VAF6IgERAI2LuAbGC+onefi1YgAAAAASUVORK5CYII="
-
-/***/ }),
-/* 138 */
-/*!************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/circle.png ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACpElEQVR4nNWWgVHiQBSG/63AdGCswKWCixUIFRgqECs4rMC1ArECYwXGCogVmHSQqyD3LcsxAeGMRzjGb+bzZ9jd915CZDA6Mt9rgMlkYolLTCRFaNFTYI25pGfnXEF2otMANzc3V03TTCXF6kYpjjFIRv4VgzvhimNJD5goUKEvmosmNChIv88SscK+IZ6iJ5c0Zl+pHRjcyrLoC0ZY4ZRCM3WAs6nYrzBIjRecLcgPGPwABSwxR88zphSoyc5QIyJmCs+MZ0CNglzjwwAcjBWaR/jIoVR7QL2ZpCus0Q9RqsW2AV6IRFw5m4fk3lAzIy4xp+YFucLgCjamCg9dhdZ98bbvgroRUUo6wRF1M3KBwRVsfCdihSd3ph6hdqpwcSW1z8gFBhewwRJzrNgQ6wDQo1T4zxjQoyDXBphK+on3LE7I3qGHI67xlh5TQXuAXNIPHLGYkb1DjyHxhK/0SATtAeaExQGLBdk79LCE71M45wbk2gANIRZW7x2CzT6LP57NhUOx2Wfxx8NCQZzj//gI3ujhX68NkOvID6EjrvGexQnZO60et/SYCtoDWGKOJYtnZO/Q452I1fqYDa5gQ6nwTTVmw0w9Qu1U4au4onasJZsDpAqbSoUpa3JvqBsR7+hzRN2MXLA2gIfNucLDmDnnRuTeUPOJGOIrNRO12DZALL6p8ARnHBiT/wz1HohU0i+07rMfJB4OWWKOngzHHKzJzlAjInzzIXoG1CjINbYO4KGAJXKFO1EaY6Z3d3ePvP6U5c94x8sI/ZUn25p7DO6EIWLxMSg8E55S3BGGyWlQ/SnKPst7p03TJApXHCvwiin7Su3A4KfQwBd1eIpdqHDiWk/7Lgx2hkEsMcRE4faeo+cNa8zFHXLLO9OFLw1wCI4+wG+bGCYwKL1TKQAAAABJRU5ErkJggg=="
-
-/***/ }),
-/* 139 */
-/*!*******************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/circle-active.png ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADC0lEQVR4nNWWTU7bQBTH3zOhXYDIBwcgPUGTEzQsq6rYnIDkBKVSgrpruqtIFvQECSfApqq6xJwAOAHhAOQD0UXB+PU/Dja2ScCUpFF/0mSeZ5x5/3nzZjxMM+b/EtD7USuQI7owlUgog6YCiuIYI/VZyKYUW9l3jWO0JSKRgJ61tSEkdSLJUyK4wxp/zL7fNvHwIA8K6P38lJdrp4XZlkghdCbMpqaxTZp0/Jl6kXE577pSYhEDo66gWY1u83yqkn37tUNjGCtADSqOHMDMKMeYUT271mhTAnr7tbK4iNhQSJ9TvOqLjTNSwK3zI5gKi5cWy9nVeh92YnoH9YxcXLaJSEchiCiOEnFPgBf2K+cIZkaIdpf1ZpmewblVbcPJBsw+v0gV48uBvijd/eoBQl4izDynNw3Uz6ZrVU1UOrzZubXmKuwARgnw1k6kBQFnnF4sPDXs4/CWY3DZgbc0a9p6eHdEBHSt2ilSPc/MlaQJl5RgctiiOb3xCk0ejOIRJB5mnzOaeZoCXbPagceVcEIGApAsdTx8FuJvy3pjE00T59yq7TDJByH6guSuE4DPIUgUm4jexNdokvS+bxniunswD5HgJQJhAUeoCuHwTJpgmfHtgIAi6ogARIYIHUHbNIj78X4U8Y5pEffj/SjQocL++h8twQkEFFBHBNg0yyS82yIz2oZ34YmeVJMkOGlDy8woAcFJNc2jOHbSRgQELyEKvLRQnOjH6OLyFGYmnmMRAQo/GUnYzBmNddjPpmvW9ohxVQsln889Ad6F5LdzjJ60CLeXjUYFzX/NuVlrMUsZoR/wy1Th0QuJ4i4hASLB6YXKU5fDC/vgV+t25hROvDAjBSg8Eddi4400qZwgXEr17V10PcrwGu/uwFQX2gHPc2mUcwWjjMVbjiunTSonPLgjJKaGqxXN8Zk/qBJLN7Li4ioHoQbClqchh7gHluNhD/OgAB/vBLvBjLBF8fg42Go8p22Gs30ciQT4qJm6jhj4U4lUePHtQFGcoPSFyNZSbPqRSQLGmi0zF/AH6M+aMEvsFYkAAAAASUVORK5CYII="
-
-/***/ }),
-/* 140 */
-/*!**********************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/rect.png ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABGElEQVR4nO2W0U0CURRE31agHYgdaCd0AiVABW4JdKQlQAXagc6YzUTwfA7hh5Pc3Mlmct793GncmPsB/w7YbrdvWmvNanQ5jjEO8zzvtcOkCXp81tporsleR+zGwuUBn1qPmleVPrRryP2i9a45yv2s/cukCSp9aw0Vzr63IH+CoUIT8icYKjQhf4KhQhPyJxgqNCF/gqFCE/InGCo0IX+CoUIT8icYKjQhf4KhQhPyJxgqNCF/gqFCE/InGCo0IX+CoUIT8icYKjQhf4KhQhPyJxgqNCF/gqFCE/InGCo0IX+CoUIT8icYFb60HjTX/Ck9yb0aC5cHzFobzTXZ64DdWDg7wCxHrDVPmiYnzeHv42bS3JT7AT80TMohOKp3ggAAAABJRU5ErkJggg=="
-
-/***/ }),
-/* 141 */
-/*!*****************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/rect-active.png ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABN0lEQVR4nO3WwU0CYRQE4Pcn3hUsQOxA6/CwdOJlucuZTbQESnAP1qElYAGABZj8viFk4oY5DnDhS4jDOhkeN0qc2eWAgwPWfftaokwj6iSsyqpEXY6abp5vqOSL1v3sLUvPGY+mRsxvm+4l9gYHbPp2m39uylV5HD0tvjLbbD9mD/W3fuZHrsbN4j4f7ZR8UR6QB0aMm27w3EXtM4AqOKl9BlAFJ7XPAKrgpPYZQBWc1D4DqIKT2mcAVXBS+wygCk5qnwFUwUntM4AqOKl9BlAFJ7XPAKrgpPYZQBWc1D4DqIKT2mcAVXBS+wygCk5qnwFUwUntM4AqOKl9BlAFJ7XPAKrgpPYZYPPe/uST66P+KK3xPZ52k9gbHHD2n+WwO6LWaf7nLt/65DevJZb/PxwODji1ywF/XaTbIQ+5pGEAAAAASUVORK5CYII="
-
-/***/ }),
-/* 142 */
-/*!*****************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/circle-fill.png ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABqUlEQVR4nM2X/zXDUBxHP28CzwRig5pATYAJ2EA6gZggzwY1gW6ACWQDMYHXCeo+lZyStNUfeXHPuefzn++lUWXUMxsHjEajU2Ywm81sWAwUxhgfNs/zF/bPGFxLmqaJpFu8QIur8DjBO+dcqTWsDOCwZcLhFLfBYQjxbCtLAzg+YB4x0W6Uki6JKNgGBht8H39Ci/vA41lbRCOgg+MVHhsRPwI4bplXTNQNpaQTIjz7hcEaAhxzg11yT0DKflEHcDyR9IYxOCaiFCwGjCVdYQzqn8JiwAdjMQbeOXfIzgM4PtT8yY/JGRHPVUDK5BiTEQGuCsg0f8uNyR33sypgwpxjTB4IuP43AZl6fglSJseY/HgIh+rz1zBAhGcOMAZTjltWiwFj9fxWnKjPP0YBIhxzg11Sf/eB3wGWKfAIu+AdB27ZB5IAEQPmWft/IKc45HjB1jQCAh1EtB4PtAYEviMmuOvL8Y4XruV4wOBSiLBMpu0fzHvMOO7ZVlYGVBCSiC8kvhM8wFVMcSz+K4JSa/hTwCLEDMWTjBYTzSnFxywsHG+v2gCDvfIJQUyrIc24XsQAAAAASUVORK5CYII="
-
-/***/ }),
-/* 143 */
-/*!************************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/circle-fill-active.png ***!
-  \************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACKUlEQVR4nM2XUU7bQBCGZ0ygD6DEhgM0vUF6gpLHqipJT0Bv0FRypL7FeasUS01vkJ6gCVXVx9ATNDdoOADYRPAABA//2hgFsA0hsc0nbXZm4+z82pldb5hyZm4Bzl7zDQlViEQXYfSYhGWETxezjYydzl8MPRpGexDnz5eyd3bZQqA6XB0tCRfC+tqLlbbx9uuYHiBRgDO0dG9y0sJDDbhzI0RdrbjRNqqWCzcSzB2N87tZkSn9xDRlWggec4E+GO86Izj3iBQQBJchTB1tGbhc4GqUiHsCUggeEinilgCVc5mc/lt82eNAOorrr2dr4paAw0GzyySfYKaGEH/fqnUaMH1uBKitJufT/zBTh9cKr8IteiPgcGD24OzCTJ3ZVUDMgKOB6aDT0bLA3azZBvpAgPPL3BaPhjAzgzWqGu/t/UDAntkQoW8wM4OZPhs7NooeIP8WjBbMzBCi9lbNVnH9/PfR1dAyAwJ+QMDH5yEg9xTkXoS5b0PFUd90iakEM32Ejjfrtg4LIa9BHfTg7MJMncijOPeXkSLX17HCv5Acn4ww+hLu8hE64NJGJfZCovCvZBeyj29KcJcHCo9XeTvxShaydBExwRWRAhTXIvp4YrF0qGVf5XpUcEWsAIWqCW9yaj21MFXBacV1azbnd0kUEKK2qHc+tViojl+UMBQPlluYe9raSjfcakk8SsAs6thGkIon/vWtTAFjjckl9ecUxyvNAaPlyhUF/Psh8ojs7QAAAABJRU5ErkJggg=="
-
-/***/ }),
-/* 144 */
-/*!***************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/rect-fill.png ***!
-  \***************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAPUlEQVR4nO3OuQEAIAgEQe2YUujYhyLEYDaA8GaO5v4BRMQ671mZWdt1bgAAAAAAAAAAAAAAAADtgK7aARs3FXAh7//tqAAAAABJRU5ErkJggg=="
-
-/***/ }),
-/* 145 */
-/*!**********************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/rect-fill-active.png ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAARElEQVR4nO3OOQEAIQxFwV0LGMMMMjCDMSxwiSAU84qk/PN/wb0D6K2M9a6Vcj3b5+wAAAAAAAAAAAAAAAAAwgFRhQMmjFxwIYRBaWgAAAAASUVORK5CYII="
-
-/***/ }),
-/* 146 */
-/*!**************************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/download.png ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhUlEQVR4nO3WgVHCMBiG4S8TqBPoCIyAE6gbJBvoBjiBbtCMgBOIE4ATyAhsUN827RnaFFpAOE+euzfcQZr+cAeH0Yn96QHmNKLCTNItDWZoVznFdjprp4sq5wH+xwBW0gs9kde6bQMU11mFb8eCkgx1sZIyqjny+pFTzFAtI6tgRbe0oBZDXZaSrinmyCvIKWaokJHVuje6p5b6ohSrcFiTI6/0ABlZtT3QlFqKizaxCoc2OWo+7xX2NxV7vToY2saqfbO+HHltYKgPq+FDOPLawlBfVv2HcOTVg6EhrLYP4cirJ0NDWXUP4chrAEO1OY2oMFP48ehi1R7CkVe3L7pRMFN1vqFaTrH4tRQraaLgkaa0SfL8cqkkNxxQ8vxyqSQ3HFDy/HKpNDdc0YoOYSzpnWLlvculklNsSk+01H5GlFHxGCvvXS6VFV3QMXzQWDBUm9IdHcMzTQRDtRuFPw0X9Js+aazwictQ7JJeaaz2n5F9FTeeKbzzFZWaAxzdeYCTD/ANuRFKIS+WXckAAAAASUVORK5CYII="
-
-/***/ }),
-/* 147 */
-/*!***********************************************************************************************!*\
-  !*** D:/我的文档/Documents/项目/uniapp/Emovision-uniapp/Emovision-uniapp/Draw/static/img/share.png ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACLklEQVR4nN2U3XHaQBRGP1XgdQURHTgVWB1AByYVRKrApALWFQAVRO5AqcBOBREVsFRAzh3xK4sHwRLP5Mycucw+cI+QUKJP5v8MyPM8lTTFTFLASlLhvbfPJ0QP2C5/Q4fHBBy0I24RUDKGuMAcHc4lPeKCgLGOSDAqBKwYtvSeZYFpZ6mkP1hzNmDuSTAqLNswjK6AJWepjogawKJM0k90WGKBxgwz3eoWsNgxbMkIz7HGlIDA3HN1QFEU3zebzUTNVdsSj3NJEzVBASvR6VvLjYsDuOoHxhQzNbxi7r2v1YPeASx2jGfM0Vhi7r0vmb1J8AMsSXV6dfblBWZqzlM1vOCE5YF5EQmesF3+hg7P8RvHLH5nXkVXQMkY4gJzdDhX8yZb44TFnhmFBE8gYMVw2PUiCd77e2Y0ugJs6R12Baw5c8xodAWUjCHaLNCYYSZuCwFjRaQrIJX0jnfYxVzSD0JqReBDgLGN8PiADkus1fz/jYAeXwgJzIvpDDjHNmwi6QmNkCRJPp1OF3y+iAR7Q0imJuQRjVrSN36NSj25KGAHISOGxy9oVDo8uM84woCVOCewVourAnYQkjMmOjy4AR0eE/BrOyJKgEGDs4F25cYvHKHh8QlfCRgx9yQYFUI2DGPAslrAmWOsMPjWm/QWAbWaZ6IrYMlZqiNuETBX83NX4p+Bxgwz/aNb4Bi1Dg/kjjWmBATmnugBxjbCY6aGShz71nLjJgF9+PSAvydN2CEdZMGMAAAAAElFTkSuQmCC"
 
 /***/ })
 ]]);
